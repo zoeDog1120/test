@@ -1,55 +1,86 @@
 package com.example.myapplication;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.myapplication.MySurfaceView;
 
+import java.util.HashMap;
+
+public class MainActivity extends Activity {
+//    SoundPool sp;
+//    HashMap<Integer,Integer> hm;
+//    int curStramId;
+    //MyTdView mView;
+    MySurfaceView mView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        setContentView(R.layout.activity_main);
+//        intSoundPool();
+//        Button b1 = (Button) this.findViewById(R.id.button1);
+//        Button b2 = (Button) this.findViewById(R.id.button2);
+//        b1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                playSound(1,0);
+//            }
+//        });
+//        b2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                sp.stop(curStramId);
+//            }
+//        });
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//        mView = new MyTdView(this);
+//        mView.requestFocus();
+//        mView.setFocusableInTouchMode(true);
+//        setContentView(mView);
+        mView = new MySurfaceView(this);
+        mView.requestFocus();
+        mView.setFocusableInTouchMode(true);
+        setContentView(mView);
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        mView.onResume();
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    public  void onPause(){
+        super.onPause();
+        mView.onPause();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    public void intSoundPool(){
+//        sp = new SoundPool.Builder()
+//                .setMaxStreams(4)
+//                .setAudioAttributes(new AudioAttributes.Builder()
+//                        .setLegacyStreamType(AudioManager.STREAM_MUSIC)
+//                        .build())
+//                .build();
+//        hm = new HashMap<Integer, Integer>();
+//        hm.put(1,sp.load(this,R.raw.click1,1));
+//    }
+//    public void playSound(int sound,int loop){
+//        AudioManager am = (AudioManager)this.getSystemService(Context.AUDIO_SERVICE);
+//        float curvol = am.getStreamVolume(AudioManager.STREAM_MUSIC);
+//        float maxVol = am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+//        float vol = curvol / maxVol;
+//        curStramId = sp.play(hm.get(sound),vol,vol,1,loop,1.0f);
+//    }
 }
