@@ -14,6 +14,13 @@ public class MySurfaceView extends GLSurfaceView {
     float mPreviousX ;
     float mPreviousY ;
     private final float TOUCH_SCALE_FACTOR = 180.0f / 320;
+    float[][] color=new float[][]{
+            {1, 0, 0.1f},//红
+            {0.98f, 0.49f, 0.04f},//橙
+            {1f, 1f, 0.04f},//黄
+            {0.67f, 1, 0},//绿
+            {0.27f, 0.41f, 1f},//蓝
+            {0.88f,0.43f,0.92f}};//紫
     public MySurfaceView(Context context){
         super(context);
         this.setEGLContextClientVersion(3);
@@ -41,11 +48,13 @@ public class MySurfaceView extends GLSurfaceView {
 
     private class SceneRederer implements GLSurfaceView.Renderer{
         SixPointedStar[] ha = new SixPointedStar[6];
+//        Circle circle;
         public void onSurfaceCreated(GL10 gl, EGLConfig config){
             GLES30.glClearColor(0,0,0,1.0f);
             for(int i = 0; i < ha.length; ++i){
-                ha[i] = new SixPointedStar(MySurfaceView.this,0.2f,0.5f,-0.5f*i);
+                ha[i] = new SixPointedStar(MySurfaceView.this,0.2f,0.5f,-0.5f*i,color[i]);
             }
+//            circle = new Circle(MySurfaceView.this);
             GLES30.glEnable(GLES30.GL_DEPTH_TEST);
         }
 
@@ -54,6 +63,7 @@ public class MySurfaceView extends GLSurfaceView {
             float radio = (float)width / height;
             MatrixState.setProjectFrustum(-radio*0.4f,radio*0.4f,-1*0.4f,1*0.4f,1,50);
             MatrixState.setCamera(0,0,3,0,0,0,0,1,0);
+            MatrixState.setInitStack();
         }
 
         public void onDrawFrame(GL10 gl){
@@ -61,6 +71,20 @@ public class MySurfaceView extends GLSurfaceView {
             for(int i = 0; i < ha.length; ++i){
                 ha[i].drawSelf();
             }
+
+
+//            circle.drawSelf(0,24);
+
+//            MatrixState.pushMatrix();
+//            MatrixState.pushMatrix();
+//            MatrixState.translate(-0.2f,0,0);
+//            circle.drawSelf(0,30);
+//            MatrixState.popMatrix();
+//            MatrixState.pushMatrix();
+//            MatrixState.translate(0.2f,0,0);
+//            circle.drawSelf(15,30);
+//            MatrixState.popMatrix();
+//            MatrixState.popMatrix();
         }
     }
 }

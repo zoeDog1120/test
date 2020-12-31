@@ -51,7 +51,7 @@ public class ShaderUtil {
         }
     }
 
-    public static String loadFromAssetFile(String fname, Resources r){
+    public static String loadFromAssetsFile(String fname, Resources r){
         String result = null;
         try {
             InputStream in = r.getAssets().open(fname);

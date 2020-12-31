@@ -19,6 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.ball.Sample6_1_Activity"/>
+        <activity android:name="com.ball6_2.Sample6_2_Activity"/>
+        <activity android:name="com.triangle.MyActivity"/>
+        <activity android:name="com.a7_4.MyActivity"/>
+        <activity android:name="com.moon_and_earth.MyActivity"/>
     </application>
 
 </manifest>

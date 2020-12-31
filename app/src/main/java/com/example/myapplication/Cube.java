@@ -19,7 +19,7 @@ public class Cube
 	FloatBuffer   mColorBuffer;//??????????????
     int vCount=0;  
     
-    public Cube(MySurfaceView mv)
+    public Cube(MySurfaceCubeView mv)
     {    	
     	//??????????????????????
     	initVertexData();
@@ -31,7 +31,7 @@ public class Cube
     public void initVertexData()
     {
     	//?????????????????================begin============================
-        vCount=12*6; 
+        vCount=12*6;
         
         float vertices[]=new float[]
         {
@@ -49,68 +49,68 @@ public class Cube
         	Constant.UNIT_SIZE,-Constant.UNIT_SIZE,Constant.UNIT_SIZE,
         	Constant.UNIT_SIZE,Constant.UNIT_SIZE,Constant.UNIT_SIZE,
         	//????
-        	0,0,-Constant.UNIT_SIZE,        	
+        	0,0,-Constant.UNIT_SIZE,
         	Constant.UNIT_SIZE,Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
         	Constant.UNIT_SIZE,-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
-        	0,0,-Constant.UNIT_SIZE, 
+        	0,0,-Constant.UNIT_SIZE,
         	Constant.UNIT_SIZE,-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
         	-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
-        	0,0,-Constant.UNIT_SIZE, 
+        	0,0,-Constant.UNIT_SIZE,
         	-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
         	-Constant.UNIT_SIZE,Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
-        	0,0,-Constant.UNIT_SIZE, 
+        	0,0,-Constant.UNIT_SIZE,
         	-Constant.UNIT_SIZE,Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
         	Constant.UNIT_SIZE,Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
         	//????
-        	-Constant.UNIT_SIZE,0,0,      	
+        	-Constant.UNIT_SIZE,0,0,
         	-Constant.UNIT_SIZE,Constant.UNIT_SIZE,Constant.UNIT_SIZE,
         	-Constant.UNIT_SIZE,Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
-        	-Constant.UNIT_SIZE,0,0,   
+        	-Constant.UNIT_SIZE,0,0,
         	-Constant.UNIT_SIZE,Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
         	-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
-        	-Constant.UNIT_SIZE,0,0,   
+        	-Constant.UNIT_SIZE,0,0,
         	-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
         	-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,Constant.UNIT_SIZE,
-        	-Constant.UNIT_SIZE,0,0,   
+        	-Constant.UNIT_SIZE,0,0,
         	-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,Constant.UNIT_SIZE,
         	-Constant.UNIT_SIZE,Constant.UNIT_SIZE,Constant.UNIT_SIZE,
-        	//????
-        	Constant.UNIT_SIZE,0,0,   
+//
+        	Constant.UNIT_SIZE,0,0,
         	Constant.UNIT_SIZE,Constant.UNIT_SIZE,Constant.UNIT_SIZE,
         	Constant.UNIT_SIZE,-Constant.UNIT_SIZE,Constant.UNIT_SIZE,
-        	Constant.UNIT_SIZE,0,0,   
+        	Constant.UNIT_SIZE,0,0,
         	Constant.UNIT_SIZE,-Constant.UNIT_SIZE,Constant.UNIT_SIZE,
         	Constant.UNIT_SIZE,-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
-        	Constant.UNIT_SIZE,0,0,   
+        	Constant.UNIT_SIZE,0,0,
         	Constant.UNIT_SIZE,-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
         	Constant.UNIT_SIZE,Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
-        	Constant.UNIT_SIZE,0,0,  
+        	Constant.UNIT_SIZE,0,0,
         	Constant.UNIT_SIZE,Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
         	Constant.UNIT_SIZE,Constant.UNIT_SIZE,Constant.UNIT_SIZE,
         	//????
-        	0,Constant.UNIT_SIZE,0,      
+        	0,Constant.UNIT_SIZE,0,
         	Constant.UNIT_SIZE,Constant.UNIT_SIZE,Constant.UNIT_SIZE,
         	Constant.UNIT_SIZE,Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
-        	0,Constant.UNIT_SIZE,0,        	
+        	0,Constant.UNIT_SIZE,0,
         	Constant.UNIT_SIZE,Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
         	-Constant.UNIT_SIZE,Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
-        	0,Constant.UNIT_SIZE,0,       
+        	0,Constant.UNIT_SIZE,0,
         	-Constant.UNIT_SIZE,Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
-        	-Constant.UNIT_SIZE,Constant.UNIT_SIZE,Constant.UNIT_SIZE, 	
-        	0,Constant.UNIT_SIZE,0,      
         	-Constant.UNIT_SIZE,Constant.UNIT_SIZE,Constant.UNIT_SIZE,
-        	Constant.UNIT_SIZE,Constant.UNIT_SIZE,Constant.UNIT_SIZE,  	
+        	0,Constant.UNIT_SIZE,0,
+        	-Constant.UNIT_SIZE,Constant.UNIT_SIZE,Constant.UNIT_SIZE,
+        	Constant.UNIT_SIZE,Constant.UNIT_SIZE,Constant.UNIT_SIZE,
         	//????
-        	0,-Constant.UNIT_SIZE,0,        	
+        	0,-Constant.UNIT_SIZE,0,
         	Constant.UNIT_SIZE,-Constant.UNIT_SIZE,Constant.UNIT_SIZE,
         	-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,Constant.UNIT_SIZE,
-        	0,-Constant.UNIT_SIZE,0,  
+        	0,-Constant.UNIT_SIZE,0,
         	-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,Constant.UNIT_SIZE,
         	-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
-        	0,-Constant.UNIT_SIZE,0,   
+        	0,-Constant.UNIT_SIZE,0,
         	-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
         	Constant.UNIT_SIZE,-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
-        	0,-Constant.UNIT_SIZE,0,    
+        	0,-Constant.UNIT_SIZE,0,
         	Constant.UNIT_SIZE,-Constant.UNIT_SIZE,-Constant.UNIT_SIZE,
         	Constant.UNIT_SIZE,-Constant.UNIT_SIZE,Constant.UNIT_SIZE,
         };
@@ -144,29 +144,29 @@ public class Cube
         		//????
         		1,1,1,0,//????????
         		0,0,1,0,
-        		0,0,1,0, 
+        		0,0,1,0,
         		1,1,1,0,//????????
         		0,0,1,0,
-        		0,0,1,0, 
+        		0,0,1,0,
         		1,1,1,0,//????????
         		0,0,1,0,
-        		0,0,1,0, 
+        		0,0,1,0,
         		1,1,1,0,//????????
         		0,0,1,0,
-        		0,0,1,0, 
+        		0,0,1,0,
         		//????
         		1,1,1,0,//????????
         		1,0,1,0,
-        		1,0,1,0, 
+        		1,0,1,0,
         		1,1,1,0,//????????
         		1,0,1,0,
-        		1,0,1,0, 
+        		1,0,1,0,
         		1,1,1,0,//????????
         		1,0,1,0,
-        		1,0,1,0, 
+        		1,0,1,0,
         		1,1,1,0,//????????
         		1,0,1,0,
-        		1,0,1,0, 
+        		1,0,1,0,
         		//????
         		1,1,1,0,//????????
         		1,1,0,0,
@@ -192,7 +192,7 @@ public class Cube
         		0,1,0,0,
         		1,1,1,0,//????????
         		0,1,0,0,
-        		0,1,0,0,        		
+        		0,1,0,0,
         		//????
         		1,1,1,0,//????????
         		0,1,1,0,
@@ -218,12 +218,12 @@ public class Cube
         //????????????????================end============================
     }
     //?????shader
-    public void initShader(MySurfaceView mv)
+    public void initShader(MySurfaceCubeView mv)
     {
     	//????????????????????
-        mVertexShader=ShaderUtil.loadFromAssetFile("vertex.sh", mv.getResources());
+        mVertexShader=ShaderUtil.loadFromAssetsFile("vertex.sh", mv.getResources());
         //???????????????????
-        mFragmentShader=ShaderUtil.loadFromAssetFile("frag.sh", mv.getResources());
+        mFragmentShader=ShaderUtil.loadFromAssetsFile("frag.sh", mv.getResources());
         //?????????????????????????????
         mProgram = ShaderUtil.createProgram(mVertexShader, mFragmentShader);
         //?????????????????????????id  

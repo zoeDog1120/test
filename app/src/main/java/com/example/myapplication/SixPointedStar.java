@@ -23,12 +23,14 @@ public class SixPointedStar {
     int maColorHandle;
     int muMvpMatrixHandle;
     int mProgram;
+    float color[] = new float[3];
     float xAngle = 0,yAngle = 0;
     final float UNIT_SIZE = 1.0f;
     int vCount;//顶点数量
-    public SixPointedStar(MySurfaceView mv,float r,float R,float z){
+    public SixPointedStar(MySurfaceView mv,float r,float R,float z,float[] color){
         initVertexData(r,R,z);
         initShader(mv);
+        this.color = color;
     }
     public void initVertexData(float R,float r,float z){
         List<Float> flist = new ArrayList<Float>();
@@ -69,30 +71,30 @@ public class SixPointedStar {
         mVertexBuffer.put(vertexArray);
         mVertexBuffer.position(0);
 
-        float[] colorArray = new float[vCount*4];
-        Log.e("yyy",String.valueOf(vCount));
-        for(int i = 0 ; i < vCount; ++i){
-            if(i%3 == 0){
-                colorArray[i*4] =1;
-                colorArray[i*4+1] =1;
-                colorArray[i*4+2] =1;
-                colorArray[i*4+3] =0;
-            }else{
-                colorArray[i*4] =0.45f;
-                colorArray[i*4+1] =0.75f;
-                colorArray[i*4+2] =0.75f;
-                colorArray[i*4+3] =0;
-            }
-        }
-        ByteBuffer cbb = ByteBuffer.allocateDirect(colorArray.length*4);
-        cbb.order(ByteOrder.nativeOrder());
-        mColorBuffer = cbb.asFloatBuffer();
-        mColorBuffer.put(colorArray);
-        mColorBuffer.position(0);
+//        float[] colorArray = new float[vCount*4];
+//        Log.e("yyy",String.valueOf(vCount));
+//        for(int i = 0 ; i < vCount; ++i){
+//            if(i%3 == 0){
+//                colorArray[i*4] =1;
+//                colorArray[i*4+1] =1;
+//                colorArray[i*4+2] =1;
+//                colorArray[i*4+3] =0;
+//            }else{
+//                colorArray[i*4] =0.45f;
+//                colorArray[i*4+1] =0.75f;
+//                colorArray[i*4+2] =0.75f;
+//                colorArray[i*4+3] =0;
+//            }
+//        }
+//        ByteBuffer cbb = ByteBuffer.allocateDirect(colorArray.length*4);
+//        cbb.order(ByteOrder.nativeOrder());
+//        mColorBuffer = cbb.asFloatBuffer();
+//        mColorBuffer.put(colorArray);
+//        mColorBuffer.position(0);
     }
     public void initShader(MySurfaceView mv){
-        mVertexShader = ShaderUtil.loadFromAssetFile("vertex.sh",mv.getResources());
-        mFragmentShader = ShaderUtil.loadFromAssetFile("frag.sh",mv.getResources());
+        mVertexShader = ShaderUtil.loadFromAssetsFile("vertex.sh",mv.getResources());
+        mFragmentShader = ShaderUtil.loadFromAssetsFile("frag.sh",mv.getResources());
         mProgram = ShaderUtil.createProgram(mVertexShader,mFragmentShader);
         maPositionHandle = GLES30.glGetAttribLocation(mProgram,"aPosition");
         maColorHandle = GLES30.glGetAttribLocation(mProgram,"aColor");
@@ -107,9 +109,10 @@ public class SixPointedStar {
         Matrix.setRotateM(mMMatrix,0,yAngle,0,1,0);
         GLES30.glUniformMatrix4fv(muMvpMatrixHandle,1,false,MatrixState.getFinalMatrix(mMMatrix),0);
         GLES30.glVertexAttribPointer(maPositionHandle,3,GLES30.GL_FLOAT,false,3*4,mVertexBuffer);
-        GLES30.glVertexAttribPointer(maColorHandle,4,GLES30.GL_FLOAT,false,4*4,mColorBuffer);
+        GLES30.glVertexAttrib4f(maColorHandle,color[0],color[1],color[2],1.0f);
+//        GLES30.glVertexAttribPointer(maColorHandle,4,GLES30.GL_FLOAT,false,4*4,mColorBuffer);
         GLES30.glEnableVertexAttribArray(maPositionHandle);
-        GLES30.glEnableVertexAttribArray(maColorHandle);
+//        GLES30.glEnableVertexAttribArray(maColorHandle);
         GLES30.glDrawArrays(GLES30.GL_TRIANGLES,0,vCount);
     }
 }

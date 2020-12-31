@@ -60,8 +60,8 @@ public class Triangle {
         mColorBuffer.position(0);
     }
     public void intShader(MyTdView mv){
-        mVertexShader = ShaderUtil.loadFromAssetFile("vertex.sh",mv.getResources());
-        mFragmentShader = ShaderUtil.loadFromAssetFile("frag.sh",mv.getResources());
+        mVertexShader = ShaderUtil.loadFromAssetsFile("vertex.sh",mv.getResources());
+        mFragmentShader = ShaderUtil.loadFromAssetsFile("frag.sh",mv.getResources());
         mProgram = ShaderUtil.createProgram(mVertexShader,mFragmentShader);
         maPositionHandle = GLES30.glGetAttribLocation(mProgram,"aPosition");
         maColorHandle = GLES30.glGetAttribLocation(mProgram,"aColor");
