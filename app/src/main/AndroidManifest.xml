@@ -24,6 +24,7 @@
         <activity android:name="com.triangle.MyActivity"/>
         <activity android:name="com.a7_4.MyActivity"/>
         <activity android:name="com.moon_and_earth.MyActivity"/>
+        <activity android:name="com.cacher_func.catcherFun.MyActivity"/>
     </application>
 
 </manifest>
